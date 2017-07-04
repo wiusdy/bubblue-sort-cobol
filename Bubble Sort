@@ -1,0 +1,77 @@
+      ******************************************************************
+      * Author: WILLIAM SDAYLE MARINS SILVA
+      * Date: 25/06/2017
+      * Purpose: ESTUDO
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. BUBBLE-SORT.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-TABLE.
+           24 VALORES PIC 9(3) OCCURS 10.
+       77 I PIC 9(2).
+       77 J PIC 9(2).       
+       77 JPLUS PIC 9(2).
+       77 AUX PIC 9(10).  
+       77 SOMA PIC 9(4).
+       77 IPLUS PIC 9(2).
+       PROCEDURE DIVISION.
+       INICIO-ENTRADA.
+           ADD 1 TO I.
+                   IF I > 10
+                       GO TO ENCERRA-ENTRADA                       
+                   END-IF.
+                   IF I <= 10
+                       DISPLAY"Digite os valores a serem ordenados"
+                       ACCEPT VALORES(I)  
+                       GO TO INICIO-ENTRADA
+                   END-IF.         
+       ENCERRA-ENTRADA.       
+      ****************** FIM DA ENTRADA DE NUMEROS **************************
+       COMPUTE I = 1.
+       INICIO-ORDENACAO.
+           COMPUTE I = I + 1.
+       INICIO-J.        
+           COMPUTE J = J + 1
+           COMPUTE JPLUS = J + 1
+                   IF JPLUS > 10
+                       GO TO FIM-J
+                   END-IF
+                   IF VALORES(J) > VALORES(JPLUS)
+                           MOVE VALORES(J) TO AUX
+                           COMPUTE VALORES(J) = 0
+                           MOVE VALORES(JPLUS) TO VALORES(J)
+                           COMPUTE VALORES(JPLUS) = 0
+                           MOVE AUX TO VALORES(JPLUS)
+                           COMPUTE AUX = 0
+                   END-IF
+                   IF JPLUS <= 10
+                       GO TO INICIO-J
+                   END-IF.
+           
+       FIM-J. 
+           IF I > 10 
+               GO TO ENCERRA-ORDENACAO
+           END-IF
+           IF I < 10
+               GO TO INICIO-ORDENACAO
+           END-IF.
+       ENCERRA-ORDENACAO.
+      ******************* FIM DA ORDENAÇÃO *******************************
+           COMPUTE I = 0.
+           MOSTRAR. 
+               ADD 1 TO I
+                   IF I <= 10
+                       DISPLAY "POSICAO ("I") "VALORES(I)
+                       GO TO MOSTRAR
+                   END-IF.
+                   IF I > 10                       
+                       GO TO ENCERRA-I
+                   END-IF.
+           
+        
+       ENCERRA-I.  
+      ***************** PARA DE IMPRIMIR OS VALORES ORDENADOS     
+       END PROGRAM BUBBLE-SORT.
