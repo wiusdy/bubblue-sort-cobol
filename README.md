@@ -1,1 +1,1 @@
-# Bubble-sort-COBOL
+# Bubble sort method created in Cobol
